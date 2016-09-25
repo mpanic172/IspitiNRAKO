@@ -1,0 +1,41 @@
+﻿@model IspitiNRAKO.Grupa
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Brisanje</h2>
+
+<h3>Jeste li sigurni da zelite obrisati grupu?</h3>
+<div>
+    <h4>Grupa</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Naziv
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Naziv)
+        </dd>
+
+        <dt>
+            Kompanija
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kompanija.Naziv)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Natrag", "Index")
+        </div>
+    }
+</div>

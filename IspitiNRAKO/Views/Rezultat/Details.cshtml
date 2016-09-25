@@ -1,0 +1,67 @@
+﻿@model IspitiNRAKO.Rezultat
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Rezultat</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Vrijeme)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vrijeme)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prolaz)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prolaz)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BrojBodova)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BrojBodova)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Postotak)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Postotak)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ispit.Naziv)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ispit.Naziv)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Korisnik.Username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Korisnik.Username)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdRezultat }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

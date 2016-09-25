@@ -1,0 +1,35 @@
+﻿@model IspitiNRAKO.Models.IspitManager
+
+@{
+    ViewBag.Title = "Start";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Pitanja</title>
+</head>
+<body>
+    <h2>Odaberite pitanje za početak ispita</h2>
+
+    <div>
+        <ul>
+            @{int counter = 1; }
+            @foreach (IspitiNRAKO.Models.PitanjeManager item in Model.Pitanja)
+            {
+                <li>
+                    @Html.ActionLink("Pitanje " + counter, "Odgovori", new { id = item.Pitanje.IdPitanje}, new { @class = "btn btn-primary" })
+                </li>
+                counter++;
+            }
+        </ul>
+    </div>
+    
+</body>
+</html>
+
+
+

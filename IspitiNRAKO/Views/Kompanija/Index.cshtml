@@ -1,0 +1,35 @@
+﻿@model IEnumerable<IspitiNRAKO.Kompanija>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Kompanije</h2>
+
+<br />
+<p>
+    @Html.ActionLink("Dodaj kompaniju", "Create")
+</p>
+<br />
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Naziv)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Naziv)
+        </td>
+        <td>
+            @Html.ActionLink("Uredi", "Edit", new { id=item.IdKompanija }) |
+            @Html.ActionLink("Obrisi", "Delete", new { id=item.IdKompanija })
+        </td>
+    </tr>
+}
+
+</table>

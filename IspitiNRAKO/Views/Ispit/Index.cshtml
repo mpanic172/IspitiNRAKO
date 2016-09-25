@@ -1,0 +1,58 @@
+﻿@model IEnumerable<IspitiNRAKO.Ispit>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Ispiti</h2>
+
+<p>
+    @Html.ActionLink("Kreiraj novi ispit", "Create")
+</p>
+<p>
+    @Html.ActionLink("Skupine pitanja za ispite", "Index", "IspitSkupPitanja")
+</p>
+<p>
+    @Html.ActionLink("Grupe korisnika za ispite", "Index", "IspitGrupa")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Naziv)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Datum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Trajanje)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UvjetProlaza)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Naziv)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Datum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Trajanje)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UvjetProlaza)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdIspit }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdIspit }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdIspit })
+        </td>
+    </tr>
+}
+
+</table>

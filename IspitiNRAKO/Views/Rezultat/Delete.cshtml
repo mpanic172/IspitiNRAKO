@@ -1,0 +1,73 @@
+﻿@model IspitiNRAKO.Rezultat
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Rezultat</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Vrijeme)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vrijeme)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prolaz)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prolaz)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BrojBodova)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BrojBodova)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Postotak)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Postotak)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ispit.Naziv)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ispit.Naziv)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Korisnik.Username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Korisnik.Username)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

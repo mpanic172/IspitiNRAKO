@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <!-- <div class="navbar navbar-inverse navbar-fixed-top">-->
+        <div class="container">
+            <div class="masthead">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "text-muted" })
+            </div>
+            <div class="masthead">
+                <ul class="nav nav-justified">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    @if (Session["UserType"] != null)
+                    {
+                        if (Session["UserType"].ToString().Equals("SuperAdmin"))
+                        {
+                            <li>@Html.ActionLink("Kompanije", "Index", "Kompanija")</li>
+
+                        }
+                        if (Session["UserType"].ToString().Equals("SuperAdmin") || Session["UserType"].ToString().Equals("Admin"))
+                        {
+                            <li>@Html.ActionLink("Administratori", "Index", "Administrator")</li>
+                            <li>@Html.ActionLink("Grupe", "Index", "Grupa")</li>
+                            <li>@Html.ActionLink("Korisnici", "Index", "Korisnik")</li>
+                            <li>@Html.ActionLink("Ispiti", "Index", "Ispit")</li>
+                            <li>@Html.ActionLink("Pitanja", "Index", "SkupPitanja")</li>
+                        }
+                        if (Session["UserType"].ToString().Equals("User"))
+                        {
+                            <li>@Html.ActionLink("Moji ispiti", "Index", "MojIspit")</li>
+                            <li> @Html.ActionLink("Rezultati", "Index", "Rezultat")</li>
+                        }
+                        <li>@Html.ActionLink("Logout", "DeleteSession", "Test")</li>
+                    }
+                    
+                    @if (Session["UserType"] == null)
+                    {
+                        <li>@Html.ActionLink("Login", "Login", "Login")</li>
+                    }
+
+                    
+                    
+                    
+                    
+
+                </ul>
+
+                <!--@Html.Partial("_LoginPartial")-->
+                
+            </div>
+
+            
+
+        </div>
+    <!--</div> -->
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    
+
+
+</body>
+</html>

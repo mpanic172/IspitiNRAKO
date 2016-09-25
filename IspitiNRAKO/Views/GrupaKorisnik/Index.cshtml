@@ -1,0 +1,39 @@
+﻿@model IEnumerable<IspitiNRAKO.GrupaKorisnik>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Grupe korisnika</h2>
+
+<p>
+    @Html.ActionLink("Dodaj korisnika u grupu", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Grupa
+        </th>
+        <th>
+            Korisnik
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Grupa.Naziv)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Korisnik.Username)
+        </td>
+        <td>
+            @Html.ActionLink("Uredi", "Edit", new { id=item.IdGrupaKorisnik }) |
+            @Html.ActionLink("Obrisi", "Delete", new { id=item.IdGrupaKorisnik })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,65 @@
+﻿@model IspitiNRAKO.Pitanje
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Brisanje</h2>
+
+<h3>Zelite li obrisati pitanje?</h3>
+<div>
+    <h4>Pitanje</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Tekst)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tekst)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tezina)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tezina)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Aktivno)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Aktivno)
+        </dd>
+
+        <dt>
+            Skup pitanja
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SkupPitanja.Naziv)
+        </dd>
+
+        <dt>
+            Vrsta pitanja
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VrstaPitanja.Naziv)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Brisi" class="btn btn-default" /> |
+            @Html.ActionLink("Natrag", "Index")
+        </div>
+    }
+</div>

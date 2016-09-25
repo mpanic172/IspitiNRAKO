@@ -1,0 +1,43 @@
+﻿@model IspitiNRAKO.Odgovor
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Odgovor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Tekst)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tekst)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tocno)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tocno)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pitanje.Tekst)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pitanje.Tekst)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdOdgovor }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

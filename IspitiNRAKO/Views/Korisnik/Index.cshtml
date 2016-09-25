@@ -1,0 +1,107 @@
+﻿@model IEnumerable<IspitiNRAKO.Korisnik>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Korisnici</h2>
+
+<p>
+    @Html.ActionLink("Kreiraj korisnika", "Create")
+</p>
+<br />
+
+<p>
+    @Html.ActionLink("Dodaj korisnika u grupu", "Index", "GrupaKorisnik")
+</p>
+
+<br />
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Prezime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Adresa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OIB)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefon)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Zanimanje)
+        </th>
+        <th>
+            Kompanija
+        </th>
+        <th>
+            Spol
+        </th>
+        <th>
+            Strucna sprema
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Username)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Password)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Prezime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Adresa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OIB)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telefon)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Zanimanje)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kompanija.Naziv)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Spol.Naziv)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StrucnaSprema.Naziv)
+        </td>
+        <td>
+            @Html.ActionLink("Uredi", "Edit", new { id=item.IdKorisnik }) |
+            @Html.ActionLink("Detalji", "Details", new { id=item.IdKorisnik }) |
+            @Html.ActionLink("Obrisi", "Delete", new { id=item.IdKorisnik })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,46 @@
+﻿@model IEnumerable<IspitiNRAKO.Odgovor>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Odgovori</h2>
+
+<p>
+    @Html.ActionLink("Dodaj novi", "Create", "Odgovor")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Tekst)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tocno)
+        </th>
+        <th>
+            Pitanje
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tekst)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tocno)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pitanje.Tekst)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit",  new { id=item.IdOdgovor }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdOdgovor }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdOdgovor })
+        </td>
+    </tr>
+}
+
+</table>

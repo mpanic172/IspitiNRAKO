@@ -1,0 +1,57 @@
+﻿@model IspitiNRAKO.IspitSkupPitanja
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Brisanje</h2>
+
+<h3>Obrisati?</h3>
+<div>
+    <h4>Skup pitanja</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UvjetProlaza)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UvjetProlaza)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BrojPitanja)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BrojPitanja)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ispit.Naziv)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ispit.Naziv)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SkupPitanja.Naziv)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SkupPitanja.Naziv)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Povratak", "Index")
+        </div>
+    }
+</div>

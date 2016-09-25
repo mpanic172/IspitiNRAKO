@@ -1,0 +1,59 @@
+﻿@model IspitiNRAKO.Pitanje
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalji</h2>
+
+<div>
+    <h4>Pitanje</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Tekst)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tekst)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tezina)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tezina)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Aktivno)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Aktivno)
+        </dd>
+
+        <dt>
+            Skup pitanja
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SkupPitanja.Naziv)
+        </dd>
+
+        <dt>
+            Vrsta pitanja
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VrstaPitanja.Naziv)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Uredi", "Edit", new { id = Model.IdPitanje }) |
+    @Html.ActionLink("Natrag", "Index")
+</p>

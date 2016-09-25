@@ -1,0 +1,52 @@
+﻿@model IEnumerable<IspitiNRAKO.IspitSkupPitanja>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UvjetProlaza)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BrojPitanja)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ispit.Naziv)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SkupPitanja.Naziv)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UvjetProlaza)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BrojPitanja)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ispit.Naziv)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SkupPitanja.Naziv)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdIspitSkupPitanja }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdIspitSkupPitanja }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdIspitSkupPitanja })
+        </td>
+    </tr>
+}
+
+</table>

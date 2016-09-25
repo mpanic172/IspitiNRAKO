@@ -1,0 +1,35 @@
+﻿@model IspitiNRAKO.GrupaKorisnik
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>GrupaKorisnik</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Grupa.Naziv)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Grupa.Naziv)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Korisnik.Username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Korisnik.Username)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdGrupaKorisnik }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

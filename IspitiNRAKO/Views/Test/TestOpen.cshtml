@@ -1,0 +1,41 @@
+﻿@model IspitiNRAKO.Models.TestPitanja
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>TestSide</title>
+</head>
+<body>
+    <h2>TEST</h2>
+    <div>
+        <br />
+        <ul>
+            @foreach (IspitiNRAKO.Models.TestTekst item in Model.TestTeksts)
+            {
+                <li>
+                    @Html.ActionLink(@item.Tekst, "TestOpen", new { idtekst = item.IdTekst })
+                </li>
+            }
+        </ul>
+        <br />
+
+        @foreach (IspitiNRAKO.Models.TestTekst item in Model.TestTeksts)
+            {
+                if (ViewBag.IdTekst == item.IdTekst)
+                {
+                <h3>
+                    @item.Tekst
+                </h3>
+            }
+        }
+
+    </div>
+</body>
+</html>
+

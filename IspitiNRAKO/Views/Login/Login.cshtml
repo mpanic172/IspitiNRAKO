@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Login</h2>
+
+@using (Html.BeginForm())
+{
+
+    <div class="form-horizontal">
+        <h4>Login</h4>
+        <hr />
+        
+        <div class="form-group">
+            <label for="usernameinput" class = "control-label col-md-2">Username:</label>
+            <div class="col-md-10">
+                <input type="text" id="usernameinput" name="usernameinput" class = "form-control" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="passwordinput" class = "control-label col-md-2">Password:</label>
+            <div class="col-md-10">
+                <input type="text" id="passwordinput" name="passwordinput" class = "form-control" />
+            </div>
+        </div>
+
+        @if (ViewBag.Greska != null)
+        {
+            <div>
+                @ViewBag.Greska
+            </div>
+        }
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Login" class="btn btn-default" />
+            </div>
+        </div>
+
+    </div>
+
+}
+

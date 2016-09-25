@@ -1,0 +1,1149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="IspitiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Administrator">
+          <Key>
+            <PropertyRef Name="IdAdministrator" />
+          </Key>
+          <Property Name="IdAdministrator" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Ime" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Prezime" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Razina" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AdministratorGrupa">
+          <Key>
+            <PropertyRef Name="IdAdministratorGrupa" />
+          </Key>
+          <Property Name="IdAdministratorGrupa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdministratorId" Type="int" Nullable="false" />
+          <Property Name="GrupaId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Grupa">
+          <Key>
+            <PropertyRef Name="IdGrupa" />
+          </Key>
+          <Property Name="IdGrupa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naziv" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="KompanijaId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GrupaKorisnik">
+          <Key>
+            <PropertyRef Name="IdGrupaKorisnik" />
+          </Key>
+          <Property Name="IdGrupaKorisnik" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KorisnikId" Type="int" Nullable="false" />
+          <Property Name="GrupaId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ispit">
+          <Key>
+            <PropertyRef Name="IdIspit" />
+          </Key>
+          <Property Name="IdIspit" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naziv" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Datum" Type="datetime" Nullable="false" />
+          <Property Name="Trajanje" Type="int" Nullable="false" />
+          <Property Name="UvjetProlaza" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IspitGrupa">
+          <Key>
+            <PropertyRef Name="IdIspitGrupa" />
+          </Key>
+          <Property Name="IdIspitGrupa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IspitId" Type="int" Nullable="false" />
+          <Property Name="GrupaId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IspitSkupPitanja">
+          <Key>
+            <PropertyRef Name="IdIspitSkupPitanja" />
+          </Key>
+          <Property Name="IdIspitSkupPitanja" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UvjetProlaza" Type="int" Nullable="false" />
+          <Property Name="BrojPitanja" Type="int" Nullable="false" />
+          <Property Name="IspitId" Type="int" Nullable="false" />
+          <Property Name="SkupPitanjaId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Kompanija">
+          <Key>
+            <PropertyRef Name="IdKompanija" />
+          </Key>
+          <Property Name="IdKompanija" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naziv" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Korisnik">
+          <Key>
+            <PropertyRef Name="IdKorisnik" />
+          </Key>
+          <Property Name="IdKorisnik" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Ime" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Prezime" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Adresa" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="OIB" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Telefon" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Zanimanje" Type="nvarchar" MaxLength="100" />
+          <Property Name="SpolId" Type="int" Nullable="false" />
+          <Property Name="StrucnaSpremaId" Type="int" Nullable="false" />
+          <Property Name="KompanijaId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Odgovor">
+          <Key>
+            <PropertyRef Name="IdOdgovor" />
+          </Key>
+          <Property Name="IdOdgovor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tekst" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Tocno" Type="int" Nullable="false" />
+          <Property Name="PitanjeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pitanje">
+          <Key>
+            <PropertyRef Name="IdPitanje" />
+          </Key>
+          <Property Name="IdPitanje" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tekst" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Tezina" Type="int" Nullable="false" />
+          <Property Name="Aktivno" Type="int" Nullable="false" />
+          <Property Name="VrstaPitanjaId" Type="int" Nullable="false" />
+          <Property Name="SkupPitanjaId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rezultat">
+          <Key>
+            <PropertyRef Name="IdRezultat" />
+          </Key>
+          <Property Name="IdRezultat" Type="int" Nullable="false" />
+          <Property Name="Vrijeme" Type="datetime" Nullable="false" />
+          <Property Name="Prolaz" Type="int" Nullable="false" />
+          <Property Name="BrojBodova" Type="int" Nullable="false" />
+          <Property Name="Postotak" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="KorisnikId" Type="int" Nullable="false" />
+          <Property Name="IspitId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SkupPitanja">
+          <Key>
+            <PropertyRef Name="IdSkupPitanja" />
+          </Key>
+          <Property Name="IdSkupPitanja" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naziv" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Spol">
+          <Key>
+            <PropertyRef Name="IdSpol" />
+          </Key>
+          <Property Name="IdSpol" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naziv" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StrucnaSprema">
+          <Key>
+            <PropertyRef Name="IdStrucnaSprema" />
+          </Key>
+          <Property Name="IdStrucnaSprema" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naziv" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VrstaPitanja">
+          <Key>
+            <PropertyRef Name="IdVrstaPitanja" />
+          </Key>
+          <Property Name="IdVrstaPitanja" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naziv" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_AdministratorGrupa_Administrator">
+          <End Role="Administrator" Type="Self.Administrator" Multiplicity="1" />
+          <End Role="AdministratorGrupa" Type="Self.AdministratorGrupa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Administrator">
+              <PropertyRef Name="IdAdministrator" />
+            </Principal>
+            <Dependent Role="AdministratorGrupa">
+              <PropertyRef Name="AdministratorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdministratorGrupa_Grupa">
+          <End Role="Grupa" Type="Self.Grupa" Multiplicity="1" />
+          <End Role="AdministratorGrupa" Type="Self.AdministratorGrupa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grupa">
+              <PropertyRef Name="IdGrupa" />
+            </Principal>
+            <Dependent Role="AdministratorGrupa">
+              <PropertyRef Name="GrupaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Grupa_Kompanija">
+          <End Role="Kompanija" Type="Self.Kompanija" Multiplicity="1" />
+          <End Role="Grupa" Type="Self.Grupa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kompanija">
+              <PropertyRef Name="IdKompanija" />
+            </Principal>
+            <Dependent Role="Grupa">
+              <PropertyRef Name="KompanijaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GrupaKorisnik_Grupa">
+          <End Role="Grupa" Type="Self.Grupa" Multiplicity="1" />
+          <End Role="GrupaKorisnik" Type="Self.GrupaKorisnik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grupa">
+              <PropertyRef Name="IdGrupa" />
+            </Principal>
+            <Dependent Role="GrupaKorisnik">
+              <PropertyRef Name="GrupaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GrupaKorisnik_Korisnik">
+          <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="1" />
+          <End Role="GrupaKorisnik" Type="Self.GrupaKorisnik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnik">
+              <PropertyRef Name="IdKorisnik" />
+            </Principal>
+            <Dependent Role="GrupaKorisnik">
+              <PropertyRef Name="KorisnikId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IspitGrupa_Grupa">
+          <End Role="Grupa" Type="Self.Grupa" Multiplicity="1" />
+          <End Role="IspitGrupa" Type="Self.IspitGrupa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grupa">
+              <PropertyRef Name="IdGrupa" />
+            </Principal>
+            <Dependent Role="IspitGrupa">
+              <PropertyRef Name="GrupaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IspitGrupa_Ispit">
+          <End Role="Ispit" Type="Self.Ispit" Multiplicity="1" />
+          <End Role="IspitGrupa" Type="Self.IspitGrupa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ispit">
+              <PropertyRef Name="IdIspit" />
+            </Principal>
+            <Dependent Role="IspitGrupa">
+              <PropertyRef Name="IspitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IspitSkupPitanja_Ispit">
+          <End Role="Ispit" Type="Self.Ispit" Multiplicity="1" />
+          <End Role="IspitSkupPitanja" Type="Self.IspitSkupPitanja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ispit">
+              <PropertyRef Name="IdIspit" />
+            </Principal>
+            <Dependent Role="IspitSkupPitanja">
+              <PropertyRef Name="IspitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IspitSkupPitanja_SkupPitanja">
+          <End Role="SkupPitanja" Type="Self.SkupPitanja" Multiplicity="1" />
+          <End Role="IspitSkupPitanja" Type="Self.IspitSkupPitanja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SkupPitanja">
+              <PropertyRef Name="IdSkupPitanja" />
+            </Principal>
+            <Dependent Role="IspitSkupPitanja">
+              <PropertyRef Name="SkupPitanjaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kompanija_Kompanija">
+          <End Role="Kompanija" Type="Self.Kompanija" Multiplicity="1" />
+          <End Role="Kompanija1" Type="Self.Kompanija" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Kompanija">
+              <PropertyRef Name="IdKompanija" />
+            </Principal>
+            <Dependent Role="Kompanija1">
+              <PropertyRef Name="IdKompanija" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Korisnik_Kompanija">
+          <End Role="Kompanija" Type="Self.Kompanija" Multiplicity="1" />
+          <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kompanija">
+              <PropertyRef Name="IdKompanija" />
+            </Principal>
+            <Dependent Role="Korisnik">
+              <PropertyRef Name="KompanijaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Korisnik_Spol">
+          <End Role="Spol" Type="Self.Spol" Multiplicity="1" />
+          <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Spol">
+              <PropertyRef Name="IdSpol" />
+            </Principal>
+            <Dependent Role="Korisnik">
+              <PropertyRef Name="SpolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Korisnik_StrucnaSprema">
+          <End Role="StrucnaSprema" Type="Self.StrucnaSprema" Multiplicity="1" />
+          <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StrucnaSprema">
+              <PropertyRef Name="IdStrucnaSprema" />
+            </Principal>
+            <Dependent Role="Korisnik">
+              <PropertyRef Name="StrucnaSpremaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Odgovor_Pitanje">
+          <End Role="Pitanje" Type="Self.Pitanje" Multiplicity="1" />
+          <End Role="Odgovor" Type="Self.Odgovor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pitanje">
+              <PropertyRef Name="IdPitanje" />
+            </Principal>
+            <Dependent Role="Odgovor">
+              <PropertyRef Name="PitanjeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pitanje_SkupPitanja">
+          <End Role="SkupPitanja" Type="Self.SkupPitanja" Multiplicity="1" />
+          <End Role="Pitanje" Type="Self.Pitanje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SkupPitanja">
+              <PropertyRef Name="IdSkupPitanja" />
+            </Principal>
+            <Dependent Role="Pitanje">
+              <PropertyRef Name="SkupPitanjaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pitanje_VrstaPitanja">
+          <End Role="VrstaPitanja" Type="Self.VrstaPitanja" Multiplicity="1" />
+          <End Role="Pitanje" Type="Self.Pitanje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VrstaPitanja">
+              <PropertyRef Name="IdVrstaPitanja" />
+            </Principal>
+            <Dependent Role="Pitanje">
+              <PropertyRef Name="VrstaPitanjaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rezultat_Ispit">
+          <End Role="Ispit" Type="Self.Ispit" Multiplicity="1" />
+          <End Role="Rezultat" Type="Self.Rezultat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ispit">
+              <PropertyRef Name="IdIspit" />
+            </Principal>
+            <Dependent Role="Rezultat">
+              <PropertyRef Name="IspitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rezultat_Korisnik">
+          <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="1" />
+          <End Role="Rezultat" Type="Self.Rezultat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnik">
+              <PropertyRef Name="IdKorisnik" />
+            </Principal>
+            <Dependent Role="Rezultat">
+              <PropertyRef Name="KorisnikId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="IspitiModelStoreContainer">
+          <EntitySet Name="Administrator" EntityType="Self.Administrator" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AdministratorGrupa" EntityType="Self.AdministratorGrupa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Grupa" EntityType="Self.Grupa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GrupaKorisnik" EntityType="Self.GrupaKorisnik" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ispit" EntityType="Self.Ispit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IspitGrupa" EntityType="Self.IspitGrupa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IspitSkupPitanja" EntityType="Self.IspitSkupPitanja" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kompanija" EntityType="Self.Kompanija" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Korisnik" EntityType="Self.Korisnik" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Odgovor" EntityType="Self.Odgovor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pitanje" EntityType="Self.Pitanje" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rezultat" EntityType="Self.Rezultat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SkupPitanja" EntityType="Self.SkupPitanja" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Spol" EntityType="Self.Spol" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StrucnaSprema" EntityType="Self.StrucnaSprema" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VrstaPitanja" EntityType="Self.VrstaPitanja" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AdministratorGrupa_Administrator" Association="Self.FK_AdministratorGrupa_Administrator">
+            <End Role="Administrator" EntitySet="Administrator" />
+            <End Role="AdministratorGrupa" EntitySet="AdministratorGrupa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdministratorGrupa_Grupa" Association="Self.FK_AdministratorGrupa_Grupa">
+            <End Role="Grupa" EntitySet="Grupa" />
+            <End Role="AdministratorGrupa" EntitySet="AdministratorGrupa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Grupa_Kompanija" Association="Self.FK_Grupa_Kompanija">
+            <End Role="Kompanija" EntitySet="Kompanija" />
+            <End Role="Grupa" EntitySet="Grupa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GrupaKorisnik_Grupa" Association="Self.FK_GrupaKorisnik_Grupa">
+            <End Role="Grupa" EntitySet="Grupa" />
+            <End Role="GrupaKorisnik" EntitySet="GrupaKorisnik" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GrupaKorisnik_Korisnik" Association="Self.FK_GrupaKorisnik_Korisnik">
+            <End Role="Korisnik" EntitySet="Korisnik" />
+            <End Role="GrupaKorisnik" EntitySet="GrupaKorisnik" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IspitGrupa_Grupa" Association="Self.FK_IspitGrupa_Grupa">
+            <End Role="Grupa" EntitySet="Grupa" />
+            <End Role="IspitGrupa" EntitySet="IspitGrupa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IspitGrupa_Ispit" Association="Self.FK_IspitGrupa_Ispit">
+            <End Role="Ispit" EntitySet="Ispit" />
+            <End Role="IspitGrupa" EntitySet="IspitGrupa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IspitSkupPitanja_Ispit" Association="Self.FK_IspitSkupPitanja_Ispit">
+            <End Role="Ispit" EntitySet="Ispit" />
+            <End Role="IspitSkupPitanja" EntitySet="IspitSkupPitanja" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IspitSkupPitanja_SkupPitanja" Association="Self.FK_IspitSkupPitanja_SkupPitanja">
+            <End Role="SkupPitanja" EntitySet="SkupPitanja" />
+            <End Role="IspitSkupPitanja" EntitySet="IspitSkupPitanja" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kompanija_Kompanija" Association="Self.FK_Kompanija_Kompanija">
+            <End Role="Kompanija" EntitySet="Kompanija" />
+            <End Role="Kompanija1" EntitySet="Kompanija" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Korisnik_Kompanija" Association="Self.FK_Korisnik_Kompanija">
+            <End Role="Kompanija" EntitySet="Kompanija" />
+            <End Role="Korisnik" EntitySet="Korisnik" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Korisnik_Spol" Association="Self.FK_Korisnik_Spol">
+            <End Role="Spol" EntitySet="Spol" />
+            <End Role="Korisnik" EntitySet="Korisnik" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Korisnik_StrucnaSprema" Association="Self.FK_Korisnik_StrucnaSprema">
+            <End Role="StrucnaSprema" EntitySet="StrucnaSprema" />
+            <End Role="Korisnik" EntitySet="Korisnik" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Odgovor_Pitanje" Association="Self.FK_Odgovor_Pitanje">
+            <End Role="Pitanje" EntitySet="Pitanje" />
+            <End Role="Odgovor" EntitySet="Odgovor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pitanje_SkupPitanja" Association="Self.FK_Pitanje_SkupPitanja">
+            <End Role="SkupPitanja" EntitySet="SkupPitanja" />
+            <End Role="Pitanje" EntitySet="Pitanje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pitanje_VrstaPitanja" Association="Self.FK_Pitanje_VrstaPitanja">
+            <End Role="VrstaPitanja" EntitySet="VrstaPitanja" />
+            <End Role="Pitanje" EntitySet="Pitanje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rezultat_Ispit" Association="Self.FK_Rezultat_Ispit">
+            <End Role="Ispit" EntitySet="Ispit" />
+            <End Role="Rezultat" EntitySet="Rezultat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rezultat_Korisnik" Association="Self.FK_Rezultat_Korisnik">
+            <End Role="Korisnik" EntitySet="Korisnik" />
+            <End Role="Rezultat" EntitySet="Rezultat" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="IspitiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Kompanija">
+          <Key>
+            <PropertyRef Name="IdKompanija" />
+          </Key>
+          <Property Name="IdKompanija" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naziv" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Grupas" Relationship="IspitiModel.FK_Grupa_Kompanija" FromRole="Kompanija" ToRole="Grupa" />
+          <NavigationProperty Name="Kompanija1" Relationship="IspitiModel.FK_Kompanija_Kompanija" FromRole="Kompanija" ToRole="Kompanija1" />
+          <NavigationProperty Name="Kompanija2" Relationship="IspitiModel.FK_Kompanija_Kompanija" FromRole="Kompanija1" ToRole="Kompanija" />
+          <NavigationProperty Name="Korisniks" Relationship="IspitiModel.FK_Korisnik_Kompanija" FromRole="Kompanija" ToRole="Korisnik" />
+        </EntityType>
+        <EntityContainer Name="IspitiEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Kompanijas" EntityType="Self.Kompanija" />
+          <EntitySet Name="Grupas" EntityType="IspitiModel.Grupa" />
+          <AssociationSet Name="FK_Grupa_Kompanija" Association="IspitiModel.FK_Grupa_Kompanija">
+            <End Role="Kompanija" EntitySet="Kompanijas" />
+            <End Role="Grupa" EntitySet="Grupas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kompanija_Kompanija" Association="IspitiModel.FK_Kompanija_Kompanija">
+            <End Role="Kompanija" EntitySet="Kompanijas" />
+            <End Role="Kompanija1" EntitySet="Kompanijas" />
+          </AssociationSet>
+          <EntitySet Name="Administrators" EntityType="IspitiModel.Administrator" />
+          <EntitySet Name="AdministratorGrupas" EntityType="IspitiModel.AdministratorGrupa" />
+          <AssociationSet Name="FK_AdministratorGrupa_Administrator" Association="IspitiModel.FK_AdministratorGrupa_Administrator">
+            <End Role="Administrator" EntitySet="Administrators" />
+            <End Role="AdministratorGrupa" EntitySet="AdministratorGrupas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdministratorGrupa_Grupa" Association="IspitiModel.FK_AdministratorGrupa_Grupa">
+            <End Role="Grupa" EntitySet="Grupas" />
+            <End Role="AdministratorGrupa" EntitySet="AdministratorGrupas" />
+          </AssociationSet>
+          <EntitySet Name="Korisniks" EntityType="IspitiModel.Korisnik" />
+          <EntitySet Name="Spols" EntityType="IspitiModel.Spol" />
+          <EntitySet Name="StrucnaSpremas" EntityType="IspitiModel.StrucnaSprema" />
+          <AssociationSet Name="FK_Korisnik_Kompanija" Association="IspitiModel.FK_Korisnik_Kompanija">
+            <End Role="Kompanija" EntitySet="Kompanijas" />
+            <End Role="Korisnik" EntitySet="Korisniks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Korisnik_Spol" Association="IspitiModel.FK_Korisnik_Spol">
+            <End Role="Spol" EntitySet="Spols" />
+            <End Role="Korisnik" EntitySet="Korisniks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Korisnik_StrucnaSprema" Association="IspitiModel.FK_Korisnik_StrucnaSprema">
+            <End Role="StrucnaSprema" EntitySet="StrucnaSpremas" />
+            <End Role="Korisnik" EntitySet="Korisniks" />
+          </AssociationSet>
+          <EntitySet Name="GrupaKorisniks" EntityType="IspitiModel.GrupaKorisnik" />
+          <AssociationSet Name="FK_GrupaKorisnik_Grupa" Association="IspitiModel.FK_GrupaKorisnik_Grupa">
+            <End Role="Grupa" EntitySet="Grupas" />
+            <End Role="GrupaKorisnik" EntitySet="GrupaKorisniks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GrupaKorisnik_Korisnik" Association="IspitiModel.FK_GrupaKorisnik_Korisnik">
+            <End Role="Korisnik" EntitySet="Korisniks" />
+            <End Role="GrupaKorisnik" EntitySet="GrupaKorisniks" />
+          </AssociationSet>
+          <EntitySet Name="Odgovors" EntityType="IspitiModel.Odgovor" />
+          <EntitySet Name="Pitanjes" EntityType="IspitiModel.Pitanje" />
+          <EntitySet Name="SkupPitanjas" EntityType="IspitiModel.SkupPitanja" />
+          <EntitySet Name="VrstaPitanjas" EntityType="IspitiModel.VrstaPitanja" />
+          <AssociationSet Name="FK_Odgovor_Pitanje" Association="IspitiModel.FK_Odgovor_Pitanje">
+            <End Role="Pitanje" EntitySet="Pitanjes" />
+            <End Role="Odgovor" EntitySet="Odgovors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pitanje_SkupPitanja" Association="IspitiModel.FK_Pitanje_SkupPitanja">
+            <End Role="SkupPitanja" EntitySet="SkupPitanjas" />
+            <End Role="Pitanje" EntitySet="Pitanjes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pitanje_VrstaPitanja" Association="IspitiModel.FK_Pitanje_VrstaPitanja">
+            <End Role="VrstaPitanja" EntitySet="VrstaPitanjas" />
+            <End Role="Pitanje" EntitySet="Pitanjes" />
+          </AssociationSet>
+          <EntitySet Name="Ispits" EntityType="IspitiModel.Ispit" />
+          <EntitySet Name="IspitSkupPitanjas" EntityType="IspitiModel.IspitSkupPitanja" />
+          <AssociationSet Name="FK_IspitSkupPitanja_Ispit" Association="IspitiModel.FK_IspitSkupPitanja_Ispit">
+            <End Role="Ispit" EntitySet="Ispits" />
+            <End Role="IspitSkupPitanja" EntitySet="IspitSkupPitanjas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IspitSkupPitanja_SkupPitanja" Association="IspitiModel.FK_IspitSkupPitanja_SkupPitanja">
+            <End Role="SkupPitanja" EntitySet="SkupPitanjas" />
+            <End Role="IspitSkupPitanja" EntitySet="IspitSkupPitanjas" />
+          </AssociationSet>
+          <EntitySet Name="IspitGrupas" EntityType="IspitiModel.IspitGrupa" />
+          <AssociationSet Name="FK_IspitGrupa_Grupa" Association="IspitiModel.FK_IspitGrupa_Grupa">
+            <End Role="Grupa" EntitySet="Grupas" />
+            <End Role="IspitGrupa" EntitySet="IspitGrupas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IspitGrupa_Ispit" Association="IspitiModel.FK_IspitGrupa_Ispit">
+            <End Role="Ispit" EntitySet="Ispits" />
+            <End Role="IspitGrupa" EntitySet="IspitGrupas" />
+          </AssociationSet>
+          <EntitySet Name="Rezultats" EntityType="IspitiModel.Rezultat" />
+          <AssociationSet Name="FK_Rezultat_Ispit" Association="IspitiModel.FK_Rezultat_Ispit">
+            <End Role="Ispit" EntitySet="Ispits" />
+            <End Role="Rezultat" EntitySet="Rezultats" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rezultat_Korisnik" Association="IspitiModel.FK_Rezultat_Korisnik">
+            <End Role="Korisnik" EntitySet="Korisniks" />
+            <End Role="Rezultat" EntitySet="Rezultats" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Grupa">
+          <Key>
+            <PropertyRef Name="IdGrupa" />
+          </Key>
+          <Property Name="IdGrupa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naziv" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="KompanijaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Kompanija" Relationship="IspitiModel.FK_Grupa_Kompanija" FromRole="Grupa" ToRole="Kompanija" />
+          <NavigationProperty Name="AdministratorGrupas" Relationship="IspitiModel.FK_AdministratorGrupa_Grupa" FromRole="Grupa" ToRole="AdministratorGrupa" />
+          <NavigationProperty Name="GrupaKorisniks" Relationship="IspitiModel.FK_GrupaKorisnik_Grupa" FromRole="Grupa" ToRole="GrupaKorisnik" />
+          <NavigationProperty Name="IspitGrupas" Relationship="IspitiModel.FK_IspitGrupa_Grupa" FromRole="Grupa" ToRole="IspitGrupa" />
+        </EntityType>
+        <Association Name="FK_Grupa_Kompanija">
+          <End Type="IspitiModel.Kompanija" Role="Kompanija" Multiplicity="1" />
+          <End Type="IspitiModel.Grupa" Role="Grupa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kompanija">
+              <PropertyRef Name="IdKompanija" />
+            </Principal>
+            <Dependent Role="Grupa">
+              <PropertyRef Name="KompanijaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kompanija_Kompanija">
+          <End Type="IspitiModel.Kompanija" Role="Kompanija" Multiplicity="1" />
+          <End Type="IspitiModel.Kompanija" Role="Kompanija1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Kompanija">
+              <PropertyRef Name="IdKompanija" />
+            </Principal>
+            <Dependent Role="Kompanija1">
+              <PropertyRef Name="IdKompanija" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Administrator">
+          <Key>
+            <PropertyRef Name="IdAdministrator" />
+          </Key>
+          <Property Name="IdAdministrator" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ime" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Prezime" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Razina" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AdministratorGrupas" Relationship="IspitiModel.FK_AdministratorGrupa_Administrator" FromRole="Administrator" ToRole="AdministratorGrupa" />
+        </EntityType>
+        <EntityType Name="AdministratorGrupa">
+          <Key>
+            <PropertyRef Name="IdAdministratorGrupa" />
+          </Key>
+          <Property Name="IdAdministratorGrupa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdministratorId" Type="Int32" Nullable="false" />
+          <Property Name="GrupaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Administrator" Relationship="IspitiModel.FK_AdministratorGrupa_Administrator" FromRole="AdministratorGrupa" ToRole="Administrator" />
+          <NavigationProperty Name="Grupa" Relationship="IspitiModel.FK_AdministratorGrupa_Grupa" FromRole="AdministratorGrupa" ToRole="Grupa" />
+        </EntityType>
+        <Association Name="FK_AdministratorGrupa_Administrator">
+          <End Type="IspitiModel.Administrator" Role="Administrator" Multiplicity="1" />
+          <End Type="IspitiModel.AdministratorGrupa" Role="AdministratorGrupa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Administrator">
+              <PropertyRef Name="IdAdministrator" />
+            </Principal>
+            <Dependent Role="AdministratorGrupa">
+              <PropertyRef Name="AdministratorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdministratorGrupa_Grupa">
+          <End Type="IspitiModel.Grupa" Role="Grupa" Multiplicity="1" />
+          <End Type="IspitiModel.AdministratorGrupa" Role="AdministratorGrupa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grupa">
+              <PropertyRef Name="IdGrupa" />
+            </Principal>
+            <Dependent Role="AdministratorGrupa">
+              <PropertyRef Name="GrupaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Korisnik">
+          <Key>
+            <PropertyRef Name="IdKorisnik" />
+          </Key>
+          <Property Name="IdKorisnik" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Ime" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Prezime" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Adresa" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="OIB" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telefon" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Zanimanje" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SpolId" Type="Int32" Nullable="false" />
+          <Property Name="StrucnaSpremaId" Type="Int32" Nullable="false" />
+          <Property Name="KompanijaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Kompanija" Relationship="IspitiModel.FK_Korisnik_Kompanija" FromRole="Korisnik" ToRole="Kompanija" />
+          <NavigationProperty Name="Spol" Relationship="IspitiModel.FK_Korisnik_Spol" FromRole="Korisnik" ToRole="Spol" />
+          <NavigationProperty Name="StrucnaSprema" Relationship="IspitiModel.FK_Korisnik_StrucnaSprema" FromRole="Korisnik" ToRole="StrucnaSprema" />
+          <NavigationProperty Name="GrupaKorisniks" Relationship="IspitiModel.FK_GrupaKorisnik_Korisnik" FromRole="Korisnik" ToRole="GrupaKorisnik" />
+          <NavigationProperty Name="Rezultats" Relationship="IspitiModel.FK_Rezultat_Korisnik" FromRole="Korisnik" ToRole="Rezultat" />
+        </EntityType>
+        <EntityType Name="Spol">
+          <Key>
+            <PropertyRef Name="IdSpol" />
+          </Key>
+          <Property Name="IdSpol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naziv" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Korisniks" Relationship="IspitiModel.FK_Korisnik_Spol" FromRole="Spol" ToRole="Korisnik" />
+        </EntityType>
+        <EntityType Name="StrucnaSprema">
+          <Key>
+            <PropertyRef Name="IdStrucnaSprema" />
+          </Key>
+          <Property Name="IdStrucnaSprema" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naziv" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Korisniks" Relationship="IspitiModel.FK_Korisnik_StrucnaSprema" FromRole="StrucnaSprema" ToRole="Korisnik" />
+        </EntityType>
+        <Association Name="FK_Korisnik_Kompanija">
+          <End Type="IspitiModel.Kompanija" Role="Kompanija" Multiplicity="1" />
+          <End Type="IspitiModel.Korisnik" Role="Korisnik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kompanija">
+              <PropertyRef Name="IdKompanija" />
+            </Principal>
+            <Dependent Role="Korisnik">
+              <PropertyRef Name="KompanijaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Korisnik_Spol">
+          <End Type="IspitiModel.Spol" Role="Spol" Multiplicity="1" />
+          <End Type="IspitiModel.Korisnik" Role="Korisnik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Spol">
+              <PropertyRef Name="IdSpol" />
+            </Principal>
+            <Dependent Role="Korisnik">
+              <PropertyRef Name="SpolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Korisnik_StrucnaSprema">
+          <End Type="IspitiModel.StrucnaSprema" Role="StrucnaSprema" Multiplicity="1" />
+          <End Type="IspitiModel.Korisnik" Role="Korisnik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StrucnaSprema">
+              <PropertyRef Name="IdStrucnaSprema" />
+            </Principal>
+            <Dependent Role="Korisnik">
+              <PropertyRef Name="StrucnaSpremaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="GrupaKorisnik">
+          <Key>
+            <PropertyRef Name="IdGrupaKorisnik" />
+          </Key>
+          <Property Name="IdGrupaKorisnik" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KorisnikId" Type="Int32" Nullable="false" />
+          <Property Name="GrupaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Grupa" Relationship="IspitiModel.FK_GrupaKorisnik_Grupa" FromRole="GrupaKorisnik" ToRole="Grupa" />
+          <NavigationProperty Name="Korisnik" Relationship="IspitiModel.FK_GrupaKorisnik_Korisnik" FromRole="GrupaKorisnik" ToRole="Korisnik" />
+        </EntityType>
+        <Association Name="FK_GrupaKorisnik_Grupa">
+          <End Type="IspitiModel.Grupa" Role="Grupa" Multiplicity="1" />
+          <End Type="IspitiModel.GrupaKorisnik" Role="GrupaKorisnik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grupa">
+              <PropertyRef Name="IdGrupa" />
+            </Principal>
+            <Dependent Role="GrupaKorisnik">
+              <PropertyRef Name="GrupaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GrupaKorisnik_Korisnik">
+          <End Type="IspitiModel.Korisnik" Role="Korisnik" Multiplicity="1" />
+          <End Type="IspitiModel.GrupaKorisnik" Role="GrupaKorisnik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnik">
+              <PropertyRef Name="IdKorisnik" />
+            </Principal>
+            <Dependent Role="GrupaKorisnik">
+              <PropertyRef Name="KorisnikId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Odgovor">
+          <Key>
+            <PropertyRef Name="IdOdgovor" />
+          </Key>
+          <Property Name="IdOdgovor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tekst" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Tocno" Type="Int32" Nullable="false" />
+          <Property Name="PitanjeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Pitanje" Relationship="IspitiModel.FK_Odgovor_Pitanje" FromRole="Odgovor" ToRole="Pitanje" />
+        </EntityType>
+        <EntityType Name="Pitanje">
+          <Key>
+            <PropertyRef Name="IdPitanje" />
+          </Key>
+          <Property Name="IdPitanje" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tekst" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Tezina" Type="Int32" Nullable="false" />
+          <Property Name="Aktivno" Type="Int32" Nullable="false" />
+          <Property Name="VrstaPitanjaId" Type="Int32" Nullable="false" />
+          <Property Name="SkupPitanjaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Odgovors" Relationship="IspitiModel.FK_Odgovor_Pitanje" FromRole="Pitanje" ToRole="Odgovor" />
+          <NavigationProperty Name="SkupPitanja" Relationship="IspitiModel.FK_Pitanje_SkupPitanja" FromRole="Pitanje" ToRole="SkupPitanja" />
+          <NavigationProperty Name="VrstaPitanja" Relationship="IspitiModel.FK_Pitanje_VrstaPitanja" FromRole="Pitanje" ToRole="VrstaPitanja" />
+        </EntityType>
+        <EntityType Name="SkupPitanja">
+          <Key>
+            <PropertyRef Name="IdSkupPitanja" />
+          </Key>
+          <Property Name="IdSkupPitanja" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naziv" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Pitanjes" Relationship="IspitiModel.FK_Pitanje_SkupPitanja" FromRole="SkupPitanja" ToRole="Pitanje" />
+          <NavigationProperty Name="IspitSkupPitanjas" Relationship="IspitiModel.FK_IspitSkupPitanja_SkupPitanja" FromRole="SkupPitanja" ToRole="IspitSkupPitanja" />
+        </EntityType>
+        <EntityType Name="VrstaPitanja">
+          <Key>
+            <PropertyRef Name="IdVrstaPitanja" />
+          </Key>
+          <Property Name="IdVrstaPitanja" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naziv" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Pitanjes" Relationship="IspitiModel.FK_Pitanje_VrstaPitanja" FromRole="VrstaPitanja" ToRole="Pitanje" />
+        </EntityType>
+        <Association Name="FK_Odgovor_Pitanje">
+          <End Type="IspitiModel.Pitanje" Role="Pitanje" Multiplicity="1" />
+          <End Type="IspitiModel.Odgovor" Role="Odgovor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pitanje">
+              <PropertyRef Name="IdPitanje" />
+            </Principal>
+            <Dependent Role="Odgovor">
+              <PropertyRef Name="PitanjeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pitanje_SkupPitanja">
+          <End Type="IspitiModel.SkupPitanja" Role="SkupPitanja" Multiplicity="1" />
+          <End Type="IspitiModel.Pitanje" Role="Pitanje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SkupPitanja">
+              <PropertyRef Name="IdSkupPitanja" />
+            </Principal>
+            <Dependent Role="Pitanje">
+              <PropertyRef Name="SkupPitanjaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pitanje_VrstaPitanja">
+          <End Type="IspitiModel.VrstaPitanja" Role="VrstaPitanja" Multiplicity="1" />
+          <End Type="IspitiModel.Pitanje" Role="Pitanje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VrstaPitanja">
+              <PropertyRef Name="IdVrstaPitanja" />
+            </Principal>
+            <Dependent Role="Pitanje">
+              <PropertyRef Name="VrstaPitanjaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Ispit">
+          <Key>
+            <PropertyRef Name="IdIspit" />
+          </Key>
+          <Property Name="IdIspit" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naziv" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Datum" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Trajanje" Type="Int32" Nullable="false" />
+          <Property Name="UvjetProlaza" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="IspitSkupPitanjas" Relationship="IspitiModel.FK_IspitSkupPitanja_Ispit" FromRole="Ispit" ToRole="IspitSkupPitanja" />
+          <NavigationProperty Name="IspitGrupas" Relationship="IspitiModel.FK_IspitGrupa_Ispit" FromRole="Ispit" ToRole="IspitGrupa" />
+          <NavigationProperty Name="Rezultats" Relationship="IspitiModel.FK_Rezultat_Ispit" FromRole="Ispit" ToRole="Rezultat" />
+        </EntityType>
+        <EntityType Name="IspitSkupPitanja">
+          <Key>
+            <PropertyRef Name="IdIspitSkupPitanja" />
+          </Key>
+          <Property Name="IdIspitSkupPitanja" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UvjetProlaza" Type="Int32" Nullable="false" />
+          <Property Name="BrojPitanja" Type="Int32" Nullable="false" />
+          <Property Name="IspitId" Type="Int32" Nullable="false" />
+          <Property Name="SkupPitanjaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Ispit" Relationship="IspitiModel.FK_IspitSkupPitanja_Ispit" FromRole="IspitSkupPitanja" ToRole="Ispit" />
+          <NavigationProperty Name="SkupPitanja" Relationship="IspitiModel.FK_IspitSkupPitanja_SkupPitanja" FromRole="IspitSkupPitanja" ToRole="SkupPitanja" />
+        </EntityType>
+        <Association Name="FK_IspitSkupPitanja_Ispit">
+          <End Type="IspitiModel.Ispit" Role="Ispit" Multiplicity="1" />
+          <End Type="IspitiModel.IspitSkupPitanja" Role="IspitSkupPitanja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ispit">
+              <PropertyRef Name="IdIspit" />
+            </Principal>
+            <Dependent Role="IspitSkupPitanja">
+              <PropertyRef Name="IspitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IspitSkupPitanja_SkupPitanja">
+          <End Type="IspitiModel.SkupPitanja" Role="SkupPitanja" Multiplicity="1" />
+          <End Type="IspitiModel.IspitSkupPitanja" Role="IspitSkupPitanja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SkupPitanja">
+              <PropertyRef Name="IdSkupPitanja" />
+            </Principal>
+            <Dependent Role="IspitSkupPitanja">
+              <PropertyRef Name="SkupPitanjaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="IspitGrupa">
+          <Key>
+            <PropertyRef Name="IdIspitGrupa" />
+          </Key>
+          <Property Name="IdIspitGrupa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IspitId" Type="Int32" Nullable="false" />
+          <Property Name="GrupaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Grupa" Relationship="IspitiModel.FK_IspitGrupa_Grupa" FromRole="IspitGrupa" ToRole="Grupa" />
+          <NavigationProperty Name="Ispit" Relationship="IspitiModel.FK_IspitGrupa_Ispit" FromRole="IspitGrupa" ToRole="Ispit" />
+        </EntityType>
+        <Association Name="FK_IspitGrupa_Grupa">
+          <End Type="IspitiModel.Grupa" Role="Grupa" Multiplicity="1" />
+          <End Type="IspitiModel.IspitGrupa" Role="IspitGrupa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grupa">
+              <PropertyRef Name="IdGrupa" />
+            </Principal>
+            <Dependent Role="IspitGrupa">
+              <PropertyRef Name="GrupaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IspitGrupa_Ispit">
+          <End Type="IspitiModel.Ispit" Role="Ispit" Multiplicity="1" />
+          <End Type="IspitiModel.IspitGrupa" Role="IspitGrupa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ispit">
+              <PropertyRef Name="IdIspit" />
+            </Principal>
+            <Dependent Role="IspitGrupa">
+              <PropertyRef Name="IspitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Rezultat">
+          <Key>
+            <PropertyRef Name="IdRezultat" />
+          </Key>
+          <Property Name="IdRezultat" Type="Int32" Nullable="false" />
+          <Property Name="Vrijeme" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Prolaz" Type="Int32" Nullable="false" />
+          <Property Name="BrojBodova" Type="Int32" Nullable="false" />
+          <Property Name="Postotak" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+          <Property Name="KorisnikId" Type="Int32" Nullable="false" />
+          <Property Name="IspitId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Ispit" Relationship="IspitiModel.FK_Rezultat_Ispit" FromRole="Rezultat" ToRole="Ispit" />
+          <NavigationProperty Name="Korisnik" Relationship="IspitiModel.FK_Rezultat_Korisnik" FromRole="Rezultat" ToRole="Korisnik" />
+        </EntityType>
+        <Association Name="FK_Rezultat_Ispit">
+          <End Type="IspitiModel.Ispit" Role="Ispit" Multiplicity="1" />
+          <End Type="IspitiModel.Rezultat" Role="Rezultat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ispit">
+              <PropertyRef Name="IdIspit" />
+            </Principal>
+            <Dependent Role="Rezultat">
+              <PropertyRef Name="IspitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rezultat_Korisnik">
+          <End Type="IspitiModel.Korisnik" Role="Korisnik" Multiplicity="1" />
+          <End Type="IspitiModel.Rezultat" Role="Rezultat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnik">
+              <PropertyRef Name="IdKorisnik" />
+            </Principal>
+            <Dependent Role="Rezultat">
+              <PropertyRef Name="KorisnikId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="IspitiModelStoreContainer" CdmEntityContainer="IspitiEntities">
+          <EntitySetMapping Name="Kompanijas">
+            <EntityTypeMapping TypeName="IspitiModel.Kompanija">
+              <MappingFragment StoreEntitySet="Kompanija">
+                <ScalarProperty Name="IdKompanija" ColumnName="IdKompanija" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Grupas">
+            <EntityTypeMapping TypeName="IspitiModel.Grupa">
+              <MappingFragment StoreEntitySet="Grupa">
+                <ScalarProperty Name="KompanijaId" ColumnName="KompanijaId" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="IdGrupa" ColumnName="IdGrupa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Administrators">
+            <EntityTypeMapping TypeName="IspitiModel.Administrator">
+              <MappingFragment StoreEntitySet="Administrator">
+                <ScalarProperty Name="Razina" ColumnName="Razina" />
+                <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="IdAdministrator" ColumnName="IdAdministrator" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdministratorGrupas">
+            <EntityTypeMapping TypeName="IspitiModel.AdministratorGrupa">
+              <MappingFragment StoreEntitySet="AdministratorGrupa">
+                <ScalarProperty Name="GrupaId" ColumnName="GrupaId" />
+                <ScalarProperty Name="AdministratorId" ColumnName="AdministratorId" />
+                <ScalarProperty Name="IdAdministratorGrupa" ColumnName="IdAdministratorGrupa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Korisniks">
+            <EntityTypeMapping TypeName="IspitiModel.Korisnik">
+              <MappingFragment StoreEntitySet="Korisnik">
+                <ScalarProperty Name="KompanijaId" ColumnName="KompanijaId" />
+                <ScalarProperty Name="StrucnaSpremaId" ColumnName="StrucnaSpremaId" />
+                <ScalarProperty Name="SpolId" ColumnName="SpolId" />
+                <ScalarProperty Name="Zanimanje" ColumnName="Zanimanje" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="OIB" ColumnName="OIB" />
+                <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="IdKorisnik" ColumnName="IdKorisnik" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Spols">
+            <EntityTypeMapping TypeName="IspitiModel.Spol">
+              <MappingFragment StoreEntitySet="Spol">
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="IdSpol" ColumnName="IdSpol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StrucnaSpremas">
+            <EntityTypeMapping TypeName="IspitiModel.StrucnaSprema">
+              <MappingFragment StoreEntitySet="StrucnaSprema">
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="IdStrucnaSprema" ColumnName="IdStrucnaSprema" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GrupaKorisniks">
+            <EntityTypeMapping TypeName="IspitiModel.GrupaKorisnik">
+              <MappingFragment StoreEntitySet="GrupaKorisnik">
+                <ScalarProperty Name="GrupaId" ColumnName="GrupaId" />
+                <ScalarProperty Name="KorisnikId" ColumnName="KorisnikId" />
+                <ScalarProperty Name="IdGrupaKorisnik" ColumnName="IdGrupaKorisnik" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Odgovors">
+            <EntityTypeMapping TypeName="IspitiModel.Odgovor">
+              <MappingFragment StoreEntitySet="Odgovor">
+                <ScalarProperty Name="PitanjeId" ColumnName="PitanjeId" />
+                <ScalarProperty Name="Tocno" ColumnName="Tocno" />
+                <ScalarProperty Name="Tekst" ColumnName="Tekst" />
+                <ScalarProperty Name="IdOdgovor" ColumnName="IdOdgovor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pitanjes">
+            <EntityTypeMapping TypeName="IspitiModel.Pitanje">
+              <MappingFragment StoreEntitySet="Pitanje">
+                <ScalarProperty Name="SkupPitanjaId" ColumnName="SkupPitanjaId" />
+                <ScalarProperty Name="VrstaPitanjaId" ColumnName="VrstaPitanjaId" />
+                <ScalarProperty Name="Aktivno" ColumnName="Aktivno" />
+                <ScalarProperty Name="Tezina" ColumnName="Tezina" />
+                <ScalarProperty Name="Tekst" ColumnName="Tekst" />
+                <ScalarProperty Name="IdPitanje" ColumnName="IdPitanje" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SkupPitanjas">
+            <EntityTypeMapping TypeName="IspitiModel.SkupPitanja">
+              <MappingFragment StoreEntitySet="SkupPitanja">
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="IdSkupPitanja" ColumnName="IdSkupPitanja" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VrstaPitanjas">
+            <EntityTypeMapping TypeName="IspitiModel.VrstaPitanja">
+              <MappingFragment StoreEntitySet="VrstaPitanja">
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="IdVrstaPitanja" ColumnName="IdVrstaPitanja" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ispits">
+            <EntityTypeMapping TypeName="IspitiModel.Ispit">
+              <MappingFragment StoreEntitySet="Ispit">
+                <ScalarProperty Name="UvjetProlaza" ColumnName="UvjetProlaza" />
+                <ScalarProperty Name="Trajanje" ColumnName="Trajanje" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="IdIspit" ColumnName="IdIspit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IspitSkupPitanjas">
+            <EntityTypeMapping TypeName="IspitiModel.IspitSkupPitanja">
+              <MappingFragment StoreEntitySet="IspitSkupPitanja">
+                <ScalarProperty Name="SkupPitanjaId" ColumnName="SkupPitanjaId" />
+                <ScalarProperty Name="IspitId" ColumnName="IspitId" />
+                <ScalarProperty Name="BrojPitanja" ColumnName="BrojPitanja" />
+                <ScalarProperty Name="UvjetProlaza" ColumnName="UvjetProlaza" />
+                <ScalarProperty Name="IdIspitSkupPitanja" ColumnName="IdIspitSkupPitanja" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IspitGrupas">
+            <EntityTypeMapping TypeName="IspitiModel.IspitGrupa">
+              <MappingFragment StoreEntitySet="IspitGrupa">
+                <ScalarProperty Name="GrupaId" ColumnName="GrupaId" />
+                <ScalarProperty Name="IspitId" ColumnName="IspitId" />
+                <ScalarProperty Name="IdIspitGrupa" ColumnName="IdIspitGrupa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rezultats">
+            <EntityTypeMapping TypeName="IspitiModel.Rezultat">
+              <MappingFragment StoreEntitySet="Rezultat">
+                <ScalarProperty Name="IspitId" ColumnName="IspitId" />
+                <ScalarProperty Name="KorisnikId" ColumnName="KorisnikId" />
+                <ScalarProperty Name="Postotak" ColumnName="Postotak" />
+                <ScalarProperty Name="BrojBodova" ColumnName="BrojBodova" />
+                <ScalarProperty Name="Prolaz" ColumnName="Prolaz" />
+                <ScalarProperty Name="Vrijeme" ColumnName="Vrijeme" />
+                <ScalarProperty Name="IdRezultat" ColumnName="IdRezultat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,39 @@
+﻿@model IEnumerable<IspitiNRAKO.AdministratorGrupa>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Administracija grupa</h2>
+
+<p>
+    @Html.ActionLink("Dodaj administratora grupi", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Administrator
+        </th>
+        <th>
+            Grupa
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Administrator.Username)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Grupa.Naziv)
+        </td>
+        <td>
+            @Html.ActionLink("Uredi", "Edit", new { id=item.IdAdministratorGrupa }) |
+            @Html.ActionLink("Obrisi", "Delete", new { id=item.IdAdministratorGrupa })
+        </td>
+    </tr>
+}
+
+</table>

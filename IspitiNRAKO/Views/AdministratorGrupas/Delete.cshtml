@@ -1,0 +1,41 @@
+﻿@model IspitiNRAKO.AdministratorGrupa
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Brisanje administratora grupa</h2>
+
+<h3>Jeste li sigurni da zelite brisati?</h3>
+<div>
+    <h4>AdministratorGrupa</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Administrator
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Administrator.Username)
+        </dd>
+
+        <dt>
+            Grupa
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Grupa.Naziv)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Brisi" class="btn btn-default" /> |
+            @Html.ActionLink("Natrag", "Index")
+        </div>
+    }
+</div>

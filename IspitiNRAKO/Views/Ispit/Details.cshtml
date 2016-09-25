@@ -1,0 +1,51 @@
+﻿@model IspitiNRAKO.Ispit
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Ispit</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Naziv)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Naziv)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Datum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Datum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Trajanje)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Trajanje)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UvjetProlaza)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UvjetProlaza)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdIspit }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
