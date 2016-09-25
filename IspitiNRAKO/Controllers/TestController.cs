@@ -136,5 +136,10 @@ namespace IspitiNRAKO.Controllers
                 return View();
             }
         }
+
+        public void MyTest()
+        {
+            int a = 1;
+        }
     }
 }
