@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Metrics;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,9 @@ namespace IspitiNRAKO.Controllers
 {
     public class LoginController : Controller
     {
+
+        private readonly Timer timer =
+    Metric.Timer("HTTP Requests", Unit.Requests);
 
         private IspitiEntities db = new IspitiEntities();
 
@@ -19,7 +23,11 @@ namespace IspitiNRAKO.Controllers
 
         public ActionResult Login()
         {
-            return View();
+            using (timer.NewContext())
+            {
+                return View();
+            }
+            
         }
 
         [HttpPost]
